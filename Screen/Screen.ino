@@ -1,52 +1,37 @@
-#include <LiquidCrystal_I2C.h>
+#include <SevSeg.h>
 #include <RTClib.h>
 
-LiquidCrystal_I2C lcd(0x27, 16, 2) // Adresse puce, nb de colonnes, nb de lignes
+SevSeg sevseg;
 
-void initializeScreen() {
-  lcd.init();
-  lcd.backlight();
-  lcd.clear();
-}
+int lastTakenHour = 0;
+bool complianceStatus = true; // Statut de conformité de Florence
 
-void updateScreen(int medTime, DateTime now, bool isDanger) {
-  // Rappel programmé
-  lcd.setCursor(0,0);
-  lcd.print("Rappel: ");
-  if(medTime < 1000) {
-    lcd.print("0");
-  }
-  lcd.print(medTime / 100);
-  lcd.print(":");
-  if ((medTime % 100) < 10) { // séparer heures et minutes
-    lcd.print("0");
-  }
-  lcd.print(medTime % 100);
-  
-  // Heure actuelle et remaining time
-  lcd.setCursor(0,1);
-  if (isDanger) {
-    lcd.print("PRENDRE MED!!!");
-  }
-  else {
-    if(now.hour() < 10) {
-      lcd.print("0");
-    }
-    lcd.print(now.hour());
-    lcd.print(":");
-    if (now.minute() < 10) {
-      lcd.print("0");
-    }
-    lcd.print(now.minute());
-    lcd.print("C'est OK!");
-  }
-}
 void setup() {
   // put your setup code here, to run once:
-  initializeScreen();
+  Serial.begin(9600);
+  Serial.println("--- SMART-MED-BOX INITIALISÉE---");
+
+  byte numDigits = 4;
+
+  byte digitPins[] = {12, 6, A2, A3};
+
+  byte segmentPins[] = {2, 3, 4, 5, 7, 13, A1, 1};
+
+  sevseg.begin(COMMON_ANODE, numDigits, digitPins, segmentPins);
+  sevseg.setBrightness(90);
+}
+
+void updateDisplay(int medTime, DateTime now, bool isDanger) {
+  if (isDanger) {
+    sevseg.setChars("ERR");
+  }
+  else {
+    int timeToDisplay = (now.hour() * 100) + now.minute();
+    sevseg.setNumber(timeToDisplay, 0);
+  }
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+  sevseg.refreshDisplay();
 }
