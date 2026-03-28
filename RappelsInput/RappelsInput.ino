@@ -43,7 +43,7 @@ int readHour() {
       }
     }
     else if (key == 'C') { // clear if mistakes
-      userInput = "";
+      timeInput = "";
       Serial.println("\nHeure effacée. Veuillez réessayer : ");
     }
   }
@@ -59,7 +59,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   if (reminder == 0){
     reminder = readHour();
-    Serial.println("Heure fixée : ")
+    Serial.println("Heure fixée : ");
     Serial.println(reminder);
   }
 
