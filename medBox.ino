@@ -73,7 +73,7 @@ void setup() {
 
   rtc.adjust(DateTime(F(__DATE__), F(__TIME__))); 
 
-  Serial.println("--- MARIYA OPERATIONNELLE ---");
+  Serial.println("--- MEDBOX OPERATIONNELLE ---");
   setCouleur(0, 0, 1);
 }
 
