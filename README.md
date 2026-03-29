@@ -1,7 +1,5 @@
 # STARHACK-2026-Equipe-13
 
-## Capteur de rythme cardiaque
-
 Smart MedBox
 Inspiration
 L'idée de la Smart MedBox est née d'un constat personnel : voir nos grands-parents lutter contre l'oubli de leurs médicaments. Cette situation crée une inquiétude constante pour les familles. Nous avons voulu offrir une solution concrète aux personnes atteintes d'Alzheimer ou à celles qui ne sont pas à l'aise avec les technologies complexes. Notre objectif était de créer un dispositif simple, efficace et rassurant.
