@@ -41,7 +41,7 @@ En tant qu'étudiants de première année, nous avons réussi à livrer un proje
 Apprentissages
 Ce projet a été un véritable accélérateur d'apprentissage :
 
-Matériel : Réalisation de montages sur plaque d'essai et application de la loi d'Ohm :
+Matériel : Réalisation de montages sur le breadobard
 
 Débogage : Apprentissage de la traque d'erreurs logicielles via le moniteur série.
 
